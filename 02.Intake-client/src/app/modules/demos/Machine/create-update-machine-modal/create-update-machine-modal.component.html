@@ -1,0 +1,69 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div class="modal-title h4 whiteFontColor" id="example-modal-sizes-title-lg">
+      <ng-container *ngIf="machine">
+        <ng-container *ngIf="machine.id" class="font-weight-bold"><strong>Edit Tenant</strong></ng-container>
+        <ng-container *ngIf="!machine.id" class="font-weight-bold"><strong>Create Tenant</strong></ng-container>
+      </ng-container>
+    </div>
+    <button class="btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body">
+    <ng-container *ngIf="isLoading">
+      <div class="overlay-layer bg-transparent">
+        <div class="spinner spinner-lg spinner-success"></div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="machine">
+      <form action="#" class="form form-label-right" [formGroup]="formGroup">
+
+        <!-- Tenant Name -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Name:</b></label>
+          <div class="col-9">
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="machineNr"
+                   placeholder="Machine Nr"
+                   autocomplete="off"
+                   [class.is-invalid]="isControlInvalid('machineNr')"
+                   [class.is-valid]="isControlValid('machineNr')"
+                   formControlName="machineNr" />
+            <div class="valid-feedback" *ngIf="isControlValid('machineNr')">
+              Tenant name was entered correct
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('required', 'machineNr')">
+              Tenant name is required
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'machineNr')">
+              Tenant name should have at least 3 characters
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('maxlength', 'machineNr')">
+              Tenant name should have maximum 350 characters
+            </div>
+          </div>
+        </div>
+        <!-- Tenant Name -->
+        <!-- Mobile  -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Machine Type Serial</b></label>
+          <div class="col-9">
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="machineTypeSerial"
+                   placeholder="Phone"
+                   autocomplete="off"
+                   formControlName="machineTypeSerial" />
+          </div>
+        </div>
+        <!-- Mobile  -->
+      </form>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary btn-elevate" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-primary btn-elevate" (click)="save()">Save</button>
+  </div>
+</div>

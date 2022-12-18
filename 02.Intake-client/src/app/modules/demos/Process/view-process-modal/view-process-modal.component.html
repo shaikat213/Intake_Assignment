@@ -1,0 +1,59 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <!--<div class="modal-title h4 whiteFontColor" id="example-modal-sizes-title-lg">
+      <ng-container *ngIf="process">
+        <ng-container *ngIf="process.id" class="font-weight-bold"><strong>Edit Process</strong></ng-container>
+        <ng-container *ngIf="!process.id" class="font-weight-bold"><strong>Create Process</strong></ng-container>
+      </ng-container>
+    </div>-->
+    <button class="btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body">
+    <ng-container *ngIf="isLoading">
+      <div class="overlay-layer bg-transparent">
+        <div class="spinner spinner-lg spinner-success"></div>
+      </div>
+    </ng-container>
+    <ng-container>
+      <form action="#" class="form form-label-right">
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Process:</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{processName}}</b></label>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Customer:</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{customerName}}</b></label>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Machine Nr:</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{machineNr}}</b></label>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Machine Type Serial</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{machineTypeSerial}}</b></label>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Process Tyme</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{processTime}}</b></label>
+        </div>
+
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Sensor Data</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{sensorData}}</b></label>
+        </div>
+
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Online From</b></label>
+          <label class="col-3 col-form-label text-lg-right"><b>{{onlineFrom}}</b></label>
+        </div>
+        <!-- Mobile  -->
+      </form>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary btn-elevate" (click)="modal.close()">Cancel</button>
+    
+  </div>
+</div>

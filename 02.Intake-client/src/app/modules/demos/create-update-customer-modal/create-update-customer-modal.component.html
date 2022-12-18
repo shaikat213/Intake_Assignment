@@ -1,0 +1,69 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div class="modal-title h4 whiteFontColor" id="example-modal-sizes-title-lg">
+      <ng-container *ngIf="customer">
+        <ng-container *ngIf="customer.id" class="font-weight-bold"><strong>Edit Tenant</strong></ng-container>
+        <ng-container *ngIf="!customer.id" class="font-weight-bold"><strong>Create Tenant</strong></ng-container>
+      </ng-container>
+    </div>
+    <button class="btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body">
+    <ng-container *ngIf="isLoading">
+      <div class="overlay-layer bg-transparent">
+        <div class="spinner spinner-lg spinner-success"></div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="customer">
+      <form action="#" class="form form-label-right" [formGroup]="formGroup">
+
+        <!-- Tenant Name -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Name:</b></label>
+          <div class="col-9">
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="customerName"
+                   placeholder="Customer Name"
+                   autocomplete="off"
+                   [class.is-invalid]="isControlInvalid('customerName')"
+                   [class.is-valid]="isControlValid('customerName')"
+                   formControlName="customerName" />
+            <div class="valid-feedback" *ngIf="isControlValid('customerName')">
+              Tenant name was entered correct
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('required', 'customerName')">
+              Tenant name is required
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'customerName')">
+              Tenant name should have at least 3 characters
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('maxlength', 'customerName')">
+              Tenant name should have maximum 350 characters
+            </div>
+          </div>
+        </div>
+        <!-- Tenant Name -->
+        <!-- Mobile  -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Mobile:</b></label>
+          <div class="col-9">
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="customerPhone"
+                   placeholder="Phone"
+                   autocomplete="off"                   
+                   formControlName="customerPhone" />            
+          </div>
+        </div>
+        <!-- Mobile  -->
+      </form>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary btn-elevate" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-primary btn-elevate" (click)="save()">Save</button>
+  </div>
+</div>

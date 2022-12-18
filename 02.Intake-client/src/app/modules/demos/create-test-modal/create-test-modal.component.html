@@ -1,0 +1,65 @@
+<div class="modal-content">
+  <div class="modal-header">
+      <div class="modal-title h4 whiteFontColor" id="example-modal-sizes-title-lg">
+          <ng-container *ngIf="testEntity">
+              <ng-container *ngIf="testEntity.id" class="font-weight-bold"><strong>Edit Test Entity</strong></ng-container>
+              <ng-container *ngIf="!testEntity.id" class="font-weight-bold"><strong>Create Test Entity</strong></ng-container>
+          </ng-container>
+      </div>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body">
+      <ng-container *ngIf="isLoading">
+          <div class="overlay-layer bg-transparent">
+              <div class="spinner spinner-lg spinner-success"></div>
+          </div>
+      </ng-container>
+      <ng-container *ngIf="testEntity">
+          <form action="#" class="form form-label-right" [formGroup]="formGroup">
+              <!-- Test Name -->
+              <div class="form-group row">
+                  <label class="col-3 col-form-label text-lg-right"><b>Name:</b></label>
+                  <div class="col-9">
+                      <input type="text"
+                             class="form-control form-control-lg form-control-solid"
+                             name="testName"
+                             placeholder="Test Name"
+                             autocomplete="off"
+                             [class.is-invalid]="isControlInvalid('testName')"
+                             [class.is-valid]="isControlValid('testName')"
+                             formControlName="testName" />
+                      <div class="valid-feedback" *ngIf="isControlValid('testName')">
+                          Test name was entered correct
+                      </div>
+                      <div class="invalid-feedback" *ngIf="controlHasError('required', 'testName')">
+                          Test name is required
+                      </div>
+                      <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'testName')">
+                          Test name should have at least 3 characters
+                      </div>
+                      <div class="invalid-feedback" *ngIf="controlHasError('maxlength', 'testName')">
+                          Test name should have maximum 350 characters
+                      </div>
+                  </div>
+              </div>
+              <!-- Test Name -->
+              <!-- Test Description -->
+              <div class="form-group row">
+                  <label class="col-3 col-form-label text-lg-right"><b>Description:</b></label>
+                  <div class="col-9">
+                      <input type="text"
+                             class="form-control form-control-lg form-control-solid"
+                             name="testDescription"
+                             placeholder="Test Description"
+                             autocomplete="off"
+                             formControlName="testDescription" />
+                  </div>
+              </div>
+              <!-- Test Description -->
+          </form>
+      </ng-container>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-light btn-elevate mr-2" (click)="modal.dismiss()">Cancel</button>
+      <button class="btn btn-primary btn-elevate" (click)="save()" [disabled]="formGroup.invalid">Save</button>
+  </div>
+</div>

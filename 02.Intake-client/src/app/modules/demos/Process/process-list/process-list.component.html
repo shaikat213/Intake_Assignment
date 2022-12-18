@@ -1,0 +1,201 @@
+<div class="card card-custom gutter-b">
+  <div class="card-header">
+    <div class="card-title">
+      <h3 class="card-label">Process Overview</h3>
+    </div>
+    <div class="card-toolbar">
+      <button type="button" class="btn btn-primary float-right" (click)="create()">New Process</button>
+    </div>
+  </div>
+  <!--<div class="card-body">
+    <form action="#" class="form form-label-right" [formGroup]="formGroup">
+      <div class="col-lg-12">
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Customer</span>
+          </div>
+          <div class="col-6">
+            <div class=""></div>
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="customer"
+                   placeholder="customer name"
+                   autocomplete="off"
+                   formControlName="customer" />
+          </div>
+          <div class="col-lg-2">
+            <button class="btn btn-primary" (click)="searchByCustomer()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Wather</span>
+          </div>
+          <div class="col-6">
+            <div class=""></div>
+
+          </div>
+          <div class="col-lg-2">
+            <button class="btn btn-primary" (click)="searchByCustomer()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>-->
+  <div class="card-body">
+    <form action="#" class="form form-label-right" [formGroup]="formGroup">
+      <table class="table table-fixed table-bordered table-striped table-hover margin-bottom-0">
+        <tbody>
+          <tr>
+            <td>Search by Customer</td>
+          </tr>
+          <tr>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Search</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input type="text"
+                             class="form-control form-control-lg form-control-solid"
+                             name="customer"
+                             placeholder="customer name"
+                             autocomplete="off"
+                             formControlName="customer" />
+                    </td>
+                    <td>
+                      <button class="btn btn-primary" (click)="searchByCustomer()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>Search by Sensor</td>
+          </tr>
+          <tr>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Water Temp.</th>
+                    <th>Pump10</th>
+                    <th>Pump5</th>
+                    <th>Dra</th>
+                    <th>Water Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input type="text"
+                             class="form-control form-control-lg form-control-solid"
+                             name="waterTemp"
+                             placeholder="temp"
+                             autocomplete="off"
+                             formControlName="waterTemp" />
+                    </td>
+                    <td>
+                      <select name="pump10"
+                              formControlName="pump10"
+                              class="form-select form-control form-control-lg form-control-solid">
+                        <option value="0">Off</option>
+                        <option value="1">On</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="pump5"
+                              formControlName="pump5"
+                              class="form-select form-control form-control-lg form-control-solid">
+                        <option value="0">Off</option>
+                        <option value="1">On</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="dra"
+                              formControlName="dra"
+                              class="form-select form-control form-control-lg form-control-solid">
+                        <option value="0">Off</option>
+                        <option value="1">On</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text"
+                             class="form-control form-control-lg form-control-solid"
+                             name="waterLevel"
+                             placeholder="level"
+                             autocomplete="off"
+                             formControlName="waterLevel" />
+                    </td>
+                    <td>
+                      <button class="btn btn-primary" (click)="searchBySensor()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+
+
+
+      </table>
+
+    </form>
+
+    <div class="card card-with-action border-primary mb-3" *ngIf="processs?.length">
+      <table class="table table-fixed table-bordered table-striped table-hover margin-bottom-0">
+        <thead class="thead-dark" style="font-weight:bold">
+          <tr>
+            <th>Serial</th>
+            <th>Customer Name</th>
+            <th>Machine Nr</th>
+            <th>Machine Type Serial</th>
+            <th>Process Name</th>
+            <th>Process Time</th>
+            <th>Sensor Data</th>
+            <th>Online From</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let process of processs, let i=index">
+            <td>{{i+1}}</td>
+            <td>{{process.customerName}}</td>
+            <td>{{process.machineNr}}</td>
+            <td>{{process.machineTypeSerial}}</td>
+            <td>{{process.processName}}</td>
+
+            <td>{{process.processTime}}</td>
+            <td>{{process.sensorData}}</td>
+            <td>{{process.onlineFrom}}</td>
+            <td>
+              <a title="Edit Entity" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" (click)="edit(process.id)">
+                <span [inlineSVG]="'./assets/media/svg/icons/Communication/Write.svg'" cacheSVG="true"
+                      class="svg-icon svg-icon-md svg-icon-primary">
+                </span>
+              </a>
+              <a title="View Entity" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" (click)="view(process.id)">
+                <span [inlineSVG]="'./assets/media/svg/icons/General/Visible.svg'" cacheSVG="true"
+                      class="svg-icon svg-icon-md svg-icon-primary">
+                </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-with-action border-primary mb-3" *ngIf="!processs?.length">
+      no data found
+    </div>
+  </div>
+</div>

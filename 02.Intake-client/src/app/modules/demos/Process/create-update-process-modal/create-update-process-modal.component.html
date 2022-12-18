@@ -1,0 +1,160 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div class="modal-title h4 whiteFontColor" id="example-modal-sizes-title-lg">
+      <ng-container *ngIf="process">
+        <ng-container *ngIf="process.id" class="font-weight-bold"><strong>Edit Process</strong></ng-container>
+        <ng-container *ngIf="!process.id" class="font-weight-bold"><strong>Create Process</strong></ng-container>
+      </ng-container>
+    </div>
+    <button class="btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body">
+    <ng-container *ngIf="isLoading">
+      <div class="overlay-layer bg-transparent">
+        <div class="spinner spinner-lg spinner-success"></div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="process">
+      <form action="#" class="form form-label-right" [formGroup]="formGroup">
+
+        <!-- Tenant Name -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Process:</b></label>
+          <div class="col-9">
+            <input type="text"
+                   class="form-control form-control-lg form-control-solid"
+                   name="processName"
+                   placeholder="Machine Sensor"
+                   autocomplete="off"
+                   [class.is-invalid]="isControlInvalid('processName')"
+                   [class.is-valid]="isControlValid('processName')"
+                   formControlName="processName" />
+            <div class="valid-feedback" *ngIf="isControlValid('processName')">
+              Tenant name was entered correct
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('required', 'processName')">
+              Tenant name is required
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'processName')">
+              Tenant name should have at least 3 characters
+            </div>
+            <div class="invalid-feedback" *ngIf="controlHasError('maxlength', 'processName')">
+              Tenant name should have maximum 350 characters
+            </div>
+          </div>
+        </div>
+        <!-- Customer Name -->
+        <!-- Mobile  -->
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Customer:</b></label>
+          <div class="col-6">
+            <select name="customerId" class="form-select form-select-lg form-select-solid" formControlName="customerId">
+              <option [ngValue]="0">Select Customer</option>
+              <option *ngFor="let customer of customerList" value="{{ customer.id }}">
+                {{ customer.customerName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Machine:</b></label>
+          <div class="col-6">
+            <select name="machineId" class="form-select form-select-lg form-select-solid" formControlName="machineId">
+              <option [ngValue]="0">Select Machine</option>
+              <option *ngFor="let machine of machineList" value="{{ machine.id }}">
+                {{ machine.machineNr }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Sensor:</b></label>
+          <div class="col-6">
+            <select name="sensorId" class="form-select form-select-lg form-select-solid" formControlName="sensorId">
+              <option [ngValue]="0">Select Sensor</option>
+              <option *ngFor="let sensor of sensorList" value="{{ sensor.id }}">
+                {{ sensor.machineSensor }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Start Date:</b></label>
+          <div class="col-6">
+            <div class="input-group input-group-sm mb-3">
+              <input class="form-control form-control-lg form-control-solid"
+                     placeholder="dd/mm/yyyy"
+                     name="startDate"
+                     formControlName="startDate"
+                     ngbDatepicker
+                     #stDate="ngbDatepicker"
+                     [minDate]="minDate"
+                     [maxDate]="maxDate" autocomplete="off" />
+              <div class="input-group-append">
+                <button class="btn btn-primary"
+                        (click)="stDate.toggle()"
+                        type="button">
+                  <i class="fa fa-calendar"></i>
+
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>End Date:</b></label>
+          <div class="col-6">
+            <div class="input-group input-group-sm mb-3">
+              <input class="form-control form-control-lg form-control-solid"
+                     placeholder="dd/mm/yyyy"
+                     name="endDate"
+                     formControlName="endDate"
+                     ngbDatepicker
+                     #eDate="ngbDatepicker"
+                     [minDate]="minDate"
+                     [maxDate]="maxDate" autocomplete="off" />
+              <div class="input-group-append">
+                <button class="btn btn-primary"
+                        (click)="eDate.toggle()"
+                        type="button">
+                  <i class="fa fa-calendar"></i>
+
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row formSpace">
+          <label class="col-3 col-form-label text-lg-right"><b>Online From:</b></label>
+          <div class="col-6">
+            <div class="input-group input-group-sm mb-3">
+              <input class="form-control form-control-lg form-control-solid"
+                     placeholder="dd/mm/yyyy"
+                     name="onlineFrom"
+                     formControlName="onlineFrom"
+                     ngbDatepicker
+                     #ofDate="ngbDatepicker"
+                     [minDate]="minDate"
+                     [maxDate]="maxDate" autocomplete="off" />
+              <div class="input-group-append">
+                <button class="btn btn-primary"
+                        (click)="ofDate.toggle()"
+                        type="button">
+                  <i class="fa fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile  -->
+      </form>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary btn-elevate" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-primary btn-elevate" (click)="save()">Save</button>
+  </div>
+</div>
