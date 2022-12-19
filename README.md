@@ -11,8 +11,6 @@ Intake Assignment:
 6)	Database connectivity: Entity framework Core (Code First)
 7)	Database: SQL Server
 
-To Run/Execute the assignment Intake Solution, please follow the instructions.
-
 *** Find the folders after download
      i) 01.asp-net.core
     ii) 02.Intake-client
@@ -20,6 +18,52 @@ To Run/Execute the assignment Intake Solution, please follow the instructions.
 
 *** Api Link from asp-net.core :- https://localhost:44330/swagger/index.html
 *** CLient UI Link :- http://localhost:4200
+
+### The solution architecture description.
+
+1) The solution structure as following.
+
+![image](https://user-images.githubusercontent.com/5942302/208354962-7470c696-2160-48e0-9d5f-5832df894c65.png)
+
+2) The database connectivity int to the folloing two files.
+
+![image](https://user-images.githubusercontent.com/5942302/208355294-3b3eaca0-8150-4dda-8338-1f26441ac985.png)
+
+![image](https://user-images.githubusercontent.com/5942302/208355390-e3d834d3-1a65-454b-a203-e616f485737c.png)
+
+3) The database model designed at the following folder
+
+![image](https://user-images.githubusercontent.com/5942302/208355599-e680a4b3-effe-4372-a417-9b9d598ef9b6.png)
+
+4) DTO and Interfaces are designed as following
+
+![image](https://user-images.githubusercontent.com/5942302/208356113-5d5f5e8f-9851-43eb-8740-713196de3dec.png)
+
+5) The all the Service are designed as following
+
+![image](https://user-images.githubusercontent.com/5942302/208356315-6c7698eb-33df-41f5-aeba-f6c5bad1f844.png)
+
+### The client UI structure description
+
+1) The client UI Solution stucture as bellow
+
+![image](https://user-images.githubusercontent.com/5942302/208356710-79449b02-154b-4470-b6f1-5cd99159ee43.png)
+
+2) The environment setup designed at the following files for the client to api connectivity.
+
+![image](https://user-images.githubusercontent.com/5942302/208357099-51322377-dbb9-4f68-8423-3d20e450e262.png)
+
+3) The UI Modules and componets
+
+![image](https://user-images.githubusercontent.com/5942302/208357477-ec01b441-166d-44fb-b7bf-32a9e55d2340.png)
+
+4) The api proxys are designed at following files from the api
+
+![image](https://user-images.githubusercontent.com/5942302/208357878-7aa0b0b6-39fe-46df-bdf6-914fc4877e7e.png)
+
+
+To Run/Execute the assignment Intake Solution, please follow the instructions.
+
 
 1)	Keep both folders (01.asp-net.core and 02.Intake-client) into same location
 2)	Run the command prompt from the aspnet-core folder and execute the following command
