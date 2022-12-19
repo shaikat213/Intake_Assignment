@@ -2,6 +2,7 @@
 Assignment for CIM Solution
 
 Intake Assignment:
+
 1)	Used library or framework: abp.io from volosoft (https://abp.io/)
 2)	Development Platform: .Net Core
 3)	Development Architecture: Microservice
@@ -11,7 +12,16 @@ Intake Assignment:
 7)	Database: SQL Server
 
 To Run/Execute the assignment Intake Solution, please follow the instructions.
-1)	Keep both folders (aspnet-core and Intake-client) into same location
+
+*** Find the folders after download
+     i) 01.asp-net.core
+    ii) 02.Intake-client
+   iii) 03.Database
+
+*** Api Link from asp-net.core :- https://localhost:44330/swagger/index.html
+*** CLient UI Link :- http://localhost:4200
+
+1)	Keep both folders (01.asp-net.core and 02.Intake-client) into same location
 2)	Run the command prompt from the aspnet-core folder and execute the following command
 a.	dotnet tool install -g Volo.Abp.Cli
 3)	Open the solution Intake.Sln from aspnet-core folder using Visual Studio 2022
@@ -25,7 +35,7 @@ a.	dotnet tool install -g Volo.Abp.Cli
 
 
 9)	Check the into SQL Server, the database Intake is created.
-10)	Execute the Intake_seed.sql in the Intake database from sql server.
+10)	Execute the Intake_seed.sql in the 03.Database from sql server.
 11)	Right click to the Intake.HttpApi.Host project and select Set as StartUp Project
 12)	Run/Execute the solution. You will get the following result from the web browser.
 
@@ -33,13 +43,13 @@ a.	dotnet tool install -g Volo.Abp.Cli
 
 
 13)	The API is running. (you can see and check the customer, machine, sensor and process apis)
-14)	Open the 2nd folder (Intake-client) in the visual studio or visual studio code.
-15)	open cmd from the folder enter into the src directory then run the npm install command
+14)	Open the 2nd folder (02.Intake-client) in the visual studio or visual studio code.
+15)	open cmd from the folder enter into the src directory then run the npm install command. The angular packages will be installed.
 
 ![image](https://user-images.githubusercontent.com/5942302/208351346-1f0988c3-56fb-445c-8b78-977c61ebfb09.png)
 
  
-16)	If installation done, then execute the following command npm start.  Compilation will be start.
+16)	If installation done, then execute the following command npm start.  Compilation will be started.
 17)	After successful compile the login page will be appeared.
  
  ![image](https://user-images.githubusercontent.com/5942302/208351377-d99c7790-aae5-4121-8910-2f233f700d84.png)
